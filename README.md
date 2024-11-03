@@ -4,7 +4,7 @@
 
 1. ##### 首先压缩包下载完后友友们可以看到三个玩意
 
-   ![文件介绍](C:\Users\13563\Desktop\pictures\7 拷贝.png)
+   ![文件介绍](README_Images\7 拷贝.png)
 
    + resource文件夹是保存图片下载的地方
    + download_pictures.exe是启动文件，各位友友直接点击就能运行了
