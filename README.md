@@ -4,7 +4,7 @@
 
 1. ##### 首先压缩包下载完后友友们可以看到三个玩意
 
-   ![文件介绍](README_Images\7 拷贝.png)
+   ![文件介绍](README_Images/7 拷贝.png)
 
    + resource文件夹是保存图片下载的地方
    + download_pictures.exe是启动文件，各位友友直接点击就能运行了
@@ -14,7 +14,7 @@
 
 2. ##### 点击exe启动后，各位可以看到下图的面板
 
-   ##### ![面板介绍](README_Images\1 拷贝.png)
+   ##### ![面板介绍](README_Images/1 拷贝.png)
 
    + 第一个框是用来提交图片下载链接地址的
    + 剩余的三个框是可填选项，感兴趣的友友可以到文档最后了解
@@ -24,13 +24,13 @@
 
 3. ##### 接下来复制链接粘贴到第一个输入框后，点击下载图片按钮等待下载完成
 
-   ![演示图片](README_Images\2拷贝.png)
+   ![演示图片](README_Images/2拷贝.png)
 
 
 
 4. ##### 完成下载后，请前往resource文件查看是否下载成功
 
-   ![](README_Images\5 拷贝.png)
+   ![](README_Images/5 拷贝.png)
 
    + 每下载一次resource文件就会多出一个download文件夹，请点开文件夹查看是否下载成功
 
@@ -38,7 +38,7 @@
 
 5. ##### 下载成功案例
 
-   ![](README_Images\6.png)
+   ![](README_Images/6.png)
 
 
 
@@ -57,19 +57,19 @@
 
 1. ##### 打开需要下载的网页
 
-   ![](README_Images\10.png)
+   ![](README_Images/10.png)
 
    
 
 2. ##### 鼠标右键后点击检查
 
-   ##### ![](README_Images\11 拷贝.png)
+   ##### ![](README_Images/11 拷贝.png)
 
 
 
 3. 步骤有点多，请直接看下图	
 
-   ![](README_Images\12 拷贝.png)
+   ![](README_Images/12 拷贝.png)
 
    + 首先点击检查后一般会什么都看不见，请点击刷新
    + 点击刷新后会看到一堆东西冒出，请不用管，点击NetWork
@@ -80,7 +80,7 @@
 
 4. 请点击Request Headers，你会看到Cookie、Referer、User-Agent
 
-   ![](README_Images\13 拷贝.png)
+   ![](README_Images/13 拷贝.png)
 
 
 
