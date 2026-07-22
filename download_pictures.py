@@ -1,5 +1,4 @@
 import os
-import time
 import requests
 from lxml import etree
 import tkinter as tk
@@ -34,8 +33,7 @@ class ImageDownloader:
 
 
        self.useFolder = ""  # 用于保存文件夹路径
-       self.lock = threading.Lock()#确保线程安全
-       self.download_counter = 0#保证进度的顺序性
+
        self.create_download_folder()
 
     #创建文件夹
@@ -51,7 +49,7 @@ class ImageDownloader:
             i += 1
 
     #下载单张图片
-    def download_single_image(self,img_url,total_images,flag,status_queue):
+    def download_single_image(self,index,img_url,total_images,flag,status_queue):
         # 这里是判断img的类型是data_src还是src
         if flag == 0:
             cleaned_url = img_url.split('@')[0]
@@ -64,15 +62,11 @@ class ImageDownloader:
 
         # 通过请求新链接来下载图片
         try:
-            img_response = requests.get(cleaned_url, headers=self.headers)
+            img_response = requests.get(cleaned_url, headers=self.headers,timeout=10)
             img_response.raise_for_status()
 
-            #线程锁，保证各个线程之间是有序的
-            with self.lock:
-                self.download_counter += 1
-                img_filename = os.path.join(self.useFolder, f"image_{self.download_counter}.png")
-                status_queue.put(f"downloading:{self.download_counter}/{total_images} {img_filename}")
-
+            img_filename = os.path.join(self.useFolder, f"{index}.png")
+            status_queue.put(f'downloading:{index}/{total_images},{img_filename}')
 
             # 创建文件夹和文件
             with open(img_filename, "wb") as f:
@@ -105,11 +99,19 @@ class ImageDownloader:
 
         #线程池
         with ThreadPoolExecutor(max_workers=4) as executor:
-            futures = [
-                executor.submit(self.download_single_image, img_src, total_images, flag, status_queue)
-                for index, img_src in enumerate(img_srcs)
-            ]
+            futures = []
 
+            for index, img_src in enumerate(img_srcs, start=1):
+                future = executor.submit(
+                    self.download_single_image,
+                    index,
+                    img_src,
+                    total_images,
+                    flag,
+                    status_queue
+                )
+
+                futures.append(future)
 
         #及时更新各个线程进度
         for future in as_completed(futures):
@@ -202,10 +204,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = App(root)
     root.mainloop()
-
-
-
-
-
-
-
